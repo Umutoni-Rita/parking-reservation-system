@@ -16,7 +16,7 @@ const SlotListScreen = ({ navigation }) => {
   const fetchSlots = async () => {
     try {
       const data = await getSlot();
-      setSlots(data);
+      setSlots(data.filter(slot => slot.isAvailable));  // Display only available slots
       setError(null);
     } catch (err) {
       setError(err.message);
